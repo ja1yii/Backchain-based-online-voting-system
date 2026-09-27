@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecurePoll — Online Voting with Face Recognition &amp; OTP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="28" height="28">
+          <path d="M20 3 L34 9 V19 C34 28 28 34.5 20 37 C12 34.5 6 28 6 19 V9 Z" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <path d="M13 20.5 L18 25.5 L27 14.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      SecurePoll
+    </a>
+    <nav class="site-nav">
+      <a href="#how">How it works</a>
+      <a href="#demo">Live demo</a>
+      <a href="#stack">Technology</a>
+    </nav>
+    <a class="btn btn-ghost" href="#demo">Try the demo</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-row">
+      <div class="hero-copy">
+        <p class="eyebrow-none kicker">A voting system project</p>
+        <h1>One face. One phone. One vote — verified before it's cast.</h1>
+        <p class="lede">SecurePoll pairs face recognition with a one-time password so every ballot comes from a real, registered voter — without a queue, a poll worker, or a paper trail to lose.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#demo">Walk through the flow</a>
+          <a class="btn btn-text" href="#how">See how verification works ↓</a>
+        </div>
+        <dl class="hero-stats">
+          <div><dt>2</dt><dd>identity checks per vote</dd></div>
+          <div><dt>&lt;30s</dt><dd>average time to cast a ballot</dd></div>
+          <div><dt>0</dt><dd>paper ballots printed</dd></div>
+        </dl>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="scan-card">
+          <div class="scan-frame">
+            <div class="scan-corner tl"></div>
+            <div class="scan-corner tr"></div>
+            <div class="scan-corner bl"></div>
+            <div class="scan-corner br"></div>
+            <div class="scan-line"></div>
+            <svg viewBox="0 0 100 100" class="face-glyph">
+              <circle cx="50" cy="38" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M18 92 C18 68 32 58 50 58 C68 58 82 68 82 92" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <p class="scan-caption">Verifying identity…</p>
+        </div>
+        <div class="otp-chip">
+          <span class="otp-label">OTP sent</span>
+          <span class="otp-digits">4 8 2 0 9 1</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="wrap">
+      <h2>Five steps between a voter and a counted ballot</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-num">1</span>
+          <h3>Register once</h3>
+          <p>A voter enrolls with their national ID and a short face capture used only to build their verification profile.</p>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <h3>Show up to vote</h3>
+          <p>On election day, the voter opens SecurePoll and starts a session tied to their registered constituency.</p>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <h3>Face verification</h3>
+          <p>The camera matches the voter's live face against their enrollment record. A mismatch stops the session immediately.</p>
+        </li>
+        <li>
+          <span class="step-num">4</span>
+          <h3>One-time password</h3>
+          <p>A six-digit code is sent to the voter's registered phone number and expires in 60 seconds — a second factor the camera alone can't fake.</p>
+        </li>
+        <li>
+          <span class="step-num">5</span>
+          <h3>Cast &amp; confirm</h3>
+          <p>The voter selects a candidate once. The ballot is recorded and the choice can't be reopened or changed.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="demo" id="demo">
+    <div class="wrap">
+      <h2>Try the verification flow</h2>
+      <p class="section-lede">This is a front-end walkthrough of the voter experience. Face capture uses your camera locally in this browser tab; nothing is uploaded, stored, or matched against a real database.</p>
+
+      <div class="demo-panel">
+
+        <div class="demo-progress" id="demo-progress">
+          <span class="dot is-active" data-step="1">Register</span>
+          <span class="dot" data-step="2">Face scan</span>
+          <span class="dot" data-step="3">OTP</span>
+          <span class="dot" data-step="4">Ballot</span>
+          <span class="dot" data-step="5">Result</span>
+        </div>
+
+        <div class="demo-stage">
+
+          <div class="stage-view is-active" data-view="1">
+            <h3>Register to vote</h3>
+            <p>Enter a name to simulate an enrolled voter record.</p>
+            <label class="field">
+              <span>Full name</span>
+              <input type="text" id="voter-name" placeholder="e.g. Asha Verma" autocomplete="off">
+            </label>
+            <label class="field">
+              <span>Voter ID</span>
+              <input type="text" id="voter-id" placeholder="e.g. VOT-2026-0341" autocomplete="off">
+            </label>
+            <button class="btn btn-primary" id="btn-start">Continue to face scan</button>
+            <p class="field-error" id="register-error" hidden>Enter a name and voter ID to continue.</p>
+          </div>
+
+          <div class="stage-view" data-view="2">
+            <h3>Face verification</h3>
+            <p>Allow camera access, then hold still inside the frame.</p>
+            <div class="camera-box">
+              <video id="camera-feed" autoplay playsinline muted></video>
+              <div class="camera-overlay">
+                <div class="scan-corner tl"></div>
+                <div class="scan-corner tr"></div>
+                <div class="scan-corner bl"></div>
+                <div class="scan-corner br"></div>
+              </div>
+              <p class="camera-placeholder" id="camera-placeholder">Camera preview appears here</p>
+            </div>
+            <div class="camera-actions">
+              <button class="btn btn-secondary" id="btn-camera">Turn on camera</button>
+              <button class="btn btn-primary" id="btn-verify-face" disabled>Verify face</button>
+            </div>
+            <p class="field-hint" id="face-status">Camera access is optional — you can simulate a match without it.</p>
+          </div>
+
+          <div class="stage-view" data-view="3">
+            <h3>Enter the one-time password</h3>
+            <p id="otp-sent-to">A 6-digit code was sent to the registered phone number.</p>
+            <div class="otp-inputs" id="otp-inputs" aria-label="One-time password">
+              <input maxlength="1" inputmode="numeric" class="otp-box">
+              <input maxlength="1" inputmode="numeric" class="otp-box">
+              <input maxlength="1" inputmode="numeric" class="otp-box">
+              <input maxlength="1" inputmode="numeric" class="otp-box">
+              <input maxlength="1" inputmode="numeric" class="otp-box">
+              <input maxlength="1" inputmode="numeric" class="otp-box">
+            </div>
+            <p class="field-hint">Demo code: <strong id="demo-otp-code">——</strong> · expires in <span id="otp-timer">60</span>s</p>
+            <button class="btn btn-primary" id="btn-verify-otp">Verify &amp; continue</button>
+            <p class="field-error" id="otp-error" hidden>That code doesn't match. Check the demo code above.</p>
+          </div>
+
+          <div class="stage-view" data-view="4">
+            <h3>Cast your ballot</h3>
+            <p>Select one candidate. This choice is final in a real election.</p>
+            <div class="ballot" id="ballot-list"></div>
+            <button class="btn btn-primary" id="btn-cast" disabled>Cast vote</button>
+          </div>
+
+          <div class="stage-view" data-view="5">
+            <h3>Vote recorded</h3>
+            <p id="confirm-message">Thank you — your ballot has been counted.</p>
+            <div class="receipt">
+              <div class="receipt-row"><span>Voter</span><strong id="receipt-name">—</strong></div>
+              <div class="receipt-row"><span>Constituency check</span><strong>Face + OTP verified</strong></div>
+              <div class="receipt-row"><span>Timestamp</span><strong id="receipt-time">—</strong></div>
+            </div>
+            <h4>Live results (demo)</h4>
+            <div class="results" id="results-list"></div>
+            <button class="btn btn-secondary" id="btn-restart">Start over</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stack" id="stack">
+    <div class="wrap">
+      <h2>Built with</h2>
+      <div class="stack-grid">
+        <div class="stack-card">
+          <h3>Frontend</h3>
+          <p>HTML5, CSS3, vanilla JavaScript — this page. No frameworks required to run it.</p>
+        </div>
+        <div class="stack-card">
+          <h3>Face recognition</h3>
+          <p>In production: a model such as OpenCV/Dlib or a cloud face-match API compares live capture to the enrollment photo.</p>
+        </div>
+        <div class="stack-card">
+          <h3>OTP delivery</h3>
+          <p>An SMS/email gateway (e.g. Twilio) issues a time-boxed code tied to the voter's session.</p>
+        </div>
+        <div class="stack-card">
+          <h3>Backend &amp; storage</h3>
+          <p>A server (e.g. Node/Django/PHP) with an encrypted database records one ballot per verified voter ID.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>SecurePoll — a student project demo. Face capture in this page runs locally in your browser and is never uploaded.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
